@@ -1,0 +1,63 @@
+<div>
+    <div class="titleBar">
+        <div style="padding-bottom: 3px;">
+            <div style="float: left; padding-top: 2px; padding-left: 2px;">
+                <img src="/images/templates.png" style="border: none;" alt="Business Plan" />
+            </div>
+            <div style="float: left; padding-top: 2px; padding-left: 2px;">
+                Business Plan:
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+        <div style="padding: 5px;">
+            <div id="BusinessPlanHeader">
+<div class="row">
+    <div class="col-md-12" style="padding-top: 5px;">
+        <div class="row form-group">
+            <div class="col-md-2">
+                <h4>Template:</h4>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" data-bind="options: ToDoRecurringTemplates, optionsText: 'Value', value: SelectedToDoRecurringTemplate"></select>
+            </div>
+            <!-- ko if: CurrentToDoRecurringTemplate().PrimaryManager -->
+            <div class="col-md-3 col-md-offset-1">
+                <h4>Primary Manager:</h4>
+            </div>
+            <div class="col-md-2">
+                <h5><span data-bind="text: CurrentToDoRecurringTemplate().PrimaryManager.FirstName + ' ' + CurrentToDoRecurringTemplate().PrimaryManager.LastName"></span></h5>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2" data-bind="visible: HasTeams">
+                <h4>Teams:</h4>
+            </div>
+            
+            <div class="col-md-4" data-bind="visible: HasTeams">
+                <select class="form-control" data-bind="options: Teams, optionsText: 'Value', value: SelectedTeam"></select>
+            </div>
+            <!-- ko if: CurrentToDoRecurringTemplate().SecondaryManagers.length > 0 -->
+            <div class="col-md-3 col-md-offset-1">
+                <h4>Secondary Manager:</h4>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <div style="padding-bottom: 1px; font-size: 14px; font-weight: bold; color: #ff6600;">Your plan is private - viewable only by you, your managers, and team leaders</div>
+            </div>
+            
+            <div class="col-md-2">
+                <h5><!-- ko foreach: CurrentToDoRecurringTemplate().SecondaryManagers --><!-- ko if: $index() == '0' --><span data-bind="text: $data.FirstName + ' ' + $data.LastName"></span><!-- /ko --><!-- ko ifnot: $index() == '0' --><span data-bind="text: ', ' + $data.FirstName + ' ' + $data.LastName"></span><!-- /ko --><!-- /ko --></h5>
+            </div>
+            <!-- /ko -->
+        </div>
+        <div class="row form-group">
+            <div class="col-md-2">
+                <h4>Plan Year:</h4>
+            </div>
+            <div class="col-md-4">
+                <select class="form-control" data-bind="options: AvailableYears, optionsText: 'Value', value: SelectedYear"></select>
+            </div>
+        </div>
+    </div>
+</div>
